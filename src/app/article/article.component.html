@@ -1,0 +1,223 @@
+<!-- <button type="button" class="btn btn-primary  " data-bs-toggle="modal" data-bs-target="#exampleModal" id="btn-modal">
+  Ajouter article
+</button> -->
+
+
+<!-- Button trigger modal -->
+<nav class="navbar navbar-expand-lg bg-body-tertiary" id="navbar-content">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">LOGO</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <button type="button" id="" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            ajouter article
+          </button>
+        </li>
+        
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+<div class="container">
+  <div  >
+    <h2 id="titre-liste">Liste des articles</h2>
+    <div class="" id="content-card">
+      <div class="card border-5 " style="width: 18rem;"  *ngFor="let article of posts">
+        <!-- getArticlesPage() -->
+        <img src="https://img.freepik.com/vecteurs-libre/fond-liste-controle-dessine-main_23-2148070732.jpg?size=626&ext=jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{article.title}}</h5>
+          <p class="card-text">{{article.body}}</p>
+          <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+          <div class="d-flex justify-content-center ">
+            <div>
+              <button class=" btn btn-danger btn-content " (click)="supprimerArticle(article.id)" ><i class="bi bi-trash3"></i></button>
+            </div>
+            <div>
+              <button class=" btn btn-secondary btn-content" (click)="  articlesArchiver(article.id)" ><i class="bi bi-file-earmark-zip-fill"></i></button>
+            </div>
+            <!-- visibleFunction();  ajout-->
+            <div>
+              <button class=" btn btn-warning    btn-content"   ><i class="bi bi-pencil-square" style="color: white;"></i></button>
+            </div>
+            <!--   details-->
+            <div class="">
+              <button class=" btn btn-secondary btn-content"   ><i class="bi bi-eye-fill"></i></button>
+            </div>
+            <!-- ajouter article modal -->
+            <button type="button" class="btn btn-success  btn-content" id="exampleModal1" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo"><i class="bi bi-pencil-square" style="color: white;"></i> </button>
+    
+          </div>
+          
+             <!-- articlesArchiver(article.id);  -->
+                <!-- (click)="supprimerArticle()"
+                  articlesArchiver() 
+                -->
+        </div>
+
+
+      </div>
+    </div>
+    </div>
+    <!-- *ngIf="isVisible"  -->
+    <!-- archiver -->
+    <!-- <div >
+    <h2>Liste des articles archivées</h2>
+    <div class="" id="content-card">
+      <div class="card border-5 " style="width: 18rem;"  *ngFor="let article of posts">
+        <img src="https://img.freepik.com/vecteurs-libre/fond-liste-controle-dessine-main_23-2148070732.jpg?size=626&ext=jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{article.title}}</h5>
+          <p class="card-text">{{article.body}}</p>
+         
+            
+            <div>
+              <button class=" btn btn-secondary" (click)=" visibleFunction(); " id="desarchive-btn">Desarchiver</button>
+            </div>
+         
+        </div>
+      </div>
+    </div>
+    </div> -->
+    <!-- archiver -->
+
+
+
+  <!-- <div >    
+    <form (ngSubmit)="ajouterArticle()">
+          <div class="mb-3">
+            <label for="titre">Titre :</label>
+            <input type="text" id="titre" name="titre"  class="form-control" required />
+          </div>
+          <div class="mb-3">
+            <label for="contenu">Contenu :</label>
+            <textarea id="contenu" name="contenu"  class="form-control" required></textarea>
+  
+            </[(ngModel)]="nouvelArticle.body"
+              (click)="fermerAjoutModal()"
+              [(ngModel)]="nouvelArticle.title"
+             
+          </div>
+          <button type="submit" class="btn btn-success" (click)= "ajouterArticle()">Ajouter</button>
+          <button type="button" class="btn btn-secondary" >Fermer</button>
+        </form>
+      </div> -->
+
+  <!-- Modal ajout article -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">ajouter article</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form action="" (ngSubmit)="ajouterArticle()">
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Title</label>
+              <input type="text" name="input1" class="form-control" id="exampleFormControlInput1" [(ngModel)]="nouvelArticle.title">
+            </div>
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label" >Description</label>
+              <textarea class="form-control" name="textarea" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="nouvelArticle.body"></textarea>
+            </div>
+          
+          </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">fermer</button>
+          <button type="button" class="btn btn-primary" (click)="ajouterArticle() ">ajouter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+ <!-- Modal ajout article -->
+
+<!-- pagination -->
+<!-- <div class="d-flex justify-content-center my-5">
+  <button class="btn btnColor me-2" [disabled]="pageActuelle === 1" (click)="pageActuelle = pageActuelle - 1">
+    Précédent
+  </button>
+  <button class="btn btnColor ms-2" *ngFor="let page of pages" (click)="pageActuelle = page">
+    {{ page }}
+  </button>
+  <button class="btn btnColor ms-2" [disabled]="pageActuelle === totalPages" (click)="pageActuelle = pageActuelle + 1">
+    Suivant
+  </button>
+</div>  -->
+<!-- pagination -->
+
+
+
+<!-- ajout article
+
+
+
+
+
+<<div class="container" *ngIf="!isVisible">
+  <h2>Articles Archivés</h2>
+  <div class="card mb-3" style=" width: 100%;" *ngFor="let article of posts" >
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="https://img.freepik.com/vecteurs-libre/fond-liste-controle-dessine-main_23-2148070732.jpg?size=626&ext=jpg" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{article.title}}</h5>
+          < <p class="card-text">{{article.body}}</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+           <button class=" btn btn-secondary  " (click)="articlesArchiver()" >Desarchiver</button> 
+          < (click)="supprimerArticle()" 
+        </div>
+      </div>
+    </div>
+  </div> 
+   
+</div> -->
+
+<!--  debut article -->
+<!-- details article  fin-->
+<!-- <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content"  >
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" *ngIf="articleDetails">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Titre</label>
+             <input type="text" class="form-control" id="recipient-name"> 
+            <textarea class="form-control" id="message-text">{{articleDetails.title}}</textarea>
+
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Description</label>
+            <textarea class="form-control" id="message-text">{{articleDetails.description}}</textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- details article  fin-->
+
+
+
+
+

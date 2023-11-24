@@ -1,0 +1,31 @@
+img{
+    /* width: 200px;
+    height: 250px; */
+}
+.card-content{
+    /* display: flex; */
+    /* display: grid;
+    grid-template-columns: repeat(3,1fr); */
+}
+#content-card{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    row-gap:  40px;
+    column-gap: 20px;
+    border: 20px solid white;
+}
+.btn-content{
+    margin-left: 5px;
+}
+#desarchive-btn{
+    width: 100%;
+}
+#btn-modal{
+    margin-left: 40px;
+}
+#titre-liste{
+    text-align: center;
+}
+/* #navbarSupportedContent{
+    background-color: #CE6A6B;
+} */

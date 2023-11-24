@@ -1,0 +1,25 @@
+<div class="container shadow">
+    <div class="card" id="card">
+      <h1>Modifier l'article</h1>
+  
+  <form (submit)="editerArticle()" >
+      <div class="container" >
+  
+      </div>
+    <div class="mb-3" >
+      <label for="title" class="form-label">Titre</label>
+      <input type="text" id="title" class="form-control" [(ngModel)]="article.title" name="title" required>
+    </div>
+  
+    <div class="mb-3">
+      <label for="body" class="form-label">Contenu</label>
+      <textarea id="body" class="form-control" [(ngModel)]="article.body" name="body" required>{{article.body}}</textarea>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>        
+     <button class="btn btn-danger" [routerLink]="['/article']"> retour </button>
+  
+  </form>
+    </div>
+  
+  </div>
